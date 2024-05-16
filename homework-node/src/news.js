@@ -10,6 +10,18 @@ import fs from 'fs'
     - 저장 형태는 Object형태로 하시되 key는 끝나는 날짜, value는 array<object({title:기사제목, url: 기사링크})>로 저장하기
 */
 
-async function main(){}
+//아래 기간 변수처리하기 
+const url = `https://search.daum.net/search?w=news&cluster=y&q=%EC%82%BC%EC%84%B1%EC%A0%84%EC%9E%90&sd=20240401000000&ed=20240405235959&period=u&DA=STC`
 
-main();
+try {
+    const response = await axios.get(url);
+    const data = response.data;
+    const $ = cheerio.load(data);
+
+    console.log($.html());
+}
+catch (error) {
+    console.error("기사 가져오기 실패.", error);
+}
+
+
