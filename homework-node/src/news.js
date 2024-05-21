@@ -66,7 +66,7 @@ async function saveNewsToJson(news,date) {
         }))
     }
     const jsonData = JSON.stringify(formattedNews, null, 2);
-    await fs.promises.writeFile(`news.json`, jsonData, 'utf8');
+    await fs.promises.writeFile(`../news.json`, jsonData, 'utf8');
   } catch (err) {
     console.error("파일 저장 실패", err);
   }
